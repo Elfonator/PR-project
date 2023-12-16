@@ -11,7 +11,7 @@ $statuesData= $db->getStatuesWithCategory();
 <div class="col-lg-4">
     <div class="item">
         <div class="thumb">
-            <img src="assets/images/<?= $statue['img_url']; ?>" alt="">
+            <img src="<?= $statue['img_url']; ?>" alt="">
             <div class="top-content">
                 <h5><?= $statue['name']; ?></h5>
                 <h6><?= $statue['type']; ?></h6>

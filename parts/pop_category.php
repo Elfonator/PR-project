@@ -25,7 +25,7 @@ $categoriesData= $db->getCategoriesWithCount();
                <?php
                 $randomImagePath = $db->getRandomImage($category['id']);
                 ?>
-                <img src="assets/images/<?= $randomImagePath; ?>" alt="">
+                <img src="<?= $randomImagePath; ?>" alt="">
                 <span class="likes"><i class="fa fa-heart"></i></span>
             </div>
             <?php else: ?>

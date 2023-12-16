@@ -16,7 +16,7 @@ $statueData = $db->getStatues();
               foreach ($statueData as $statue): ?>
                   <div class="item">
                       <div class="thumb">
-                          <img src="assets/images/<?= $statue['img_url']; ?>" alt="">
+                          <img src="<?= $statue['img_url']; ?>" alt="">
                           <div class="hover-effect">
                               <div class="content">
                                   <h4><?= $statue['name']; ?></h4>
