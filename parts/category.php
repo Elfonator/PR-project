@@ -7,6 +7,7 @@ $db = new DB("localhost", 3306, "root", "", "collection_db");
 
 $categoriesData= $db->getCategoriesWithCount();
 ?>
+
 <div class="top-categories">
     <div class="container">
         <div class="row">

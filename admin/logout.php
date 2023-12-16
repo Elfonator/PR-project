@@ -8,5 +8,5 @@ session_unset();
 session_destroy();
 
 // Presmerujte na prihlasovaciu stránku
-header('Location: index.php');
+header('Location: ../index.php');
 exit();

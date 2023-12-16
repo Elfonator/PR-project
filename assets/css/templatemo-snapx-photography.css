@@ -187,7 +187,7 @@ body {
 }
 
 section {
-  margin-top: 120px;
+  margin-top: 50px;
 }
 
 .section-heading {
@@ -223,10 +223,10 @@ section {
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Header Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .background-header {
@@ -785,7 +785,7 @@ a.btn_red {
 
 .social_login .icon {
   display: inline-block;
-  
+
   padding: 5px 10px;
   margin-right: 10px;
   float: left;
@@ -924,10 +924,10 @@ a.btn_red {
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Banner Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .main-banner {
@@ -1011,7 +1011,7 @@ Banner Style
 ---------------------------------------------
 featured
 ---------------------------------------------
-*/ 
+*/
 
 section.featured-items {
   margin-top: -150px;
@@ -1126,7 +1126,7 @@ section.featured-items {
 ---------------------------------------------
 popular categories
 ---------------------------------------------
-*/ 
+*/
 
 section.popular-categories {
   padding: 0px 65px;
@@ -1245,15 +1245,8 @@ section.popular-categories .main-button {
 ---------------------------------------------
 closed contests
 ---------------------------------------------
-*/ 
+*/
 
-section.closed-contests {
-  background-image: url(../images/closed-bg.jpg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  padding: 120px 0px;
-}
 
 .closed-item .thumb {
   position: relative;
@@ -1375,7 +1368,7 @@ section.closed-contests {
 ---------------------------------------------
 pricing-plans
 ---------------------------------------------
-*/ 
+*/
 
 .pricing-item {
   text-align: center;
@@ -1442,10 +1435,10 @@ pricing-plans
 }
 
 
-/* 
+/*
 ---------------------------------------------
-footer 
---------------------------------------------- 
+footer
+---------------------------------------------
 */
 
 footer.no-space {
@@ -1471,10 +1464,10 @@ footer p a {
 
 
 
-/* 
+/*
 ---------------------------------------------
 page heading
---------------------------------------------- 
+---------------------------------------------
 */
 
 .page-heading {
@@ -1482,10 +1475,11 @@ page heading
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  padding-top: 200px;
-  padding-bottom: 130px;
+  padding-top: 150px;
+  padding-bottom: 100px;
   text-align: center;
   background-color: #2a2a2a;
+  max-height: 400px;
 }
 
 .page-heading h2 {
@@ -1529,12 +1523,12 @@ page heading
 .page-heading .main-content .counter div {
   margin: 0 2px;
   display: inline-block;
-  text-align: center; 
+  text-align: center;
 }
 @media (min-width: 992px) {
   .page-heading .main-content .counter div {
-    margin: 0px 10px; 
-  } 
+    margin: 0px 10px;
+  }
 }
 .page-heading .main-content .counter div .value {
   font-size: 50px;
@@ -1543,7 +1537,7 @@ page heading
   margin-top: 0px;
   margin-bottom: 10px;
   display: inline-block;
-  position: relative; 
+  position: relative;
 }
 
 .page-heading .main-content .counter div span {
@@ -1554,10 +1548,10 @@ page heading
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Contests Page
---------------------------------------------- 
+---------------------------------------------
 */
 
 #search-form {
@@ -1647,7 +1641,7 @@ Contests Page
 .photos-videos .item .thumb .top-content {
   position: absolute;
   display: inline;
-  top: 20px;
+  top: 220px;
   left: 20px;
   right: 20px;
   background-color: #fff;
@@ -1811,10 +1805,10 @@ Contests Page
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Contest Details Page
---------------------------------------------- 
+---------------------------------------------
 */
 
 .contest-details .top-content {
@@ -1879,7 +1873,7 @@ Contest Details Page
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 25px;
-} 
+}
 
 .contest-details .main-content h6 {
   font-size: 15px;
@@ -2032,10 +2026,10 @@ Contest Details Page
 
 
 
-/* 
+/*
 ---------------------------------------------
 Categories Page
---------------------------------------------- 
+---------------------------------------------
 */
 
 .top-categories {
@@ -2211,7 +2205,7 @@ Categories Page
 }
 
 .testimonials .item {
-  border: 1px solid #e0e0e0; 
+  border: 1px solid #e0e0e0;
   padding: 60px 60px 100px 60px;
   border-radius: 15px;
 }
@@ -2276,10 +2270,10 @@ Categories Page
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Users Page
---------------------------------------------- 
+---------------------------------------------
 */
 
 .user-info {
@@ -2495,7 +2489,7 @@ section.contact-us .info-item a:hover {
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.06);
 }
 
-#contact input::placeholder, 
+#contact input::placeholder,
 #contact textarea::placeholder {
   color: #212741;
 }

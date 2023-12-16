@@ -13,11 +13,3 @@ if(isset($_POST['submit'])) {
 }
 
 ?>
-<div class="container">
-    <h2>Add new item into menu tab:</h2><br>
-    <form action="insertMenuItem.php" method="post">
-        <input type="text" name="name" value="" placeholder="Page name"><br>
-        <input type="text" name="url" value="" placeholder="Page url"><br>
-        <input type="submit" name="submit" value="Add">
-    </form>
-</div>
