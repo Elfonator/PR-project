@@ -33,6 +33,7 @@ include_once "../lib/DB.php";
 use PO\Lib\DB;
 
 $db = new DB("localhost", 3306, "root", "", "collection_db");
+
 ?>
 
 <body>

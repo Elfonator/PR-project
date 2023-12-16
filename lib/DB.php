@@ -39,9 +39,9 @@ class DB
         }
     }
 
-    public function insertMenuItem(string $pageName, string $url): bool
+    public function insertMenuItem(string $page_name, string $page_url): bool
     {
-        $sql = "INSERT INTO menu(page_name, page_url) VALUE ('" . $pageName . "', '" . $url . "')";
+        $sql = "INSERT INTO menu(page_name, page_url) VALUE ('" . $page_name . "', '" . $page_url . "')";
         $stmt = $this->connection->prepare($sql);
         return $stmt->execute();
     }
