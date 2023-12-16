@@ -12,9 +12,7 @@ $categoriesData= $db->getCategoriesWithCount();
     <div class="col-lg-3 col-sm-6">
         <div class="popular-item">
             <div class="top-content">
-                <div class="icon">
-                    <img src="<?= $category['icon']; ?>" alt="">
-                </div>
+                    <img src="<?= $category['icon']; ?>" style="max-width: 64px; margin-right: 20px;" alt="">
                 <div class="right">
                     <h4><?= $category['name']; ?></h4>
                     <span><em><?= $category['item_count']; ?></em> Available Items</span>

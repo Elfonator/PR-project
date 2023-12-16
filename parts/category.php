@@ -14,9 +14,7 @@ $categoriesData= $db->getCategoriesWithCount();
             <?php foreach ($categoriesData as $category): ?>
                 <div class="col-lg col-sm-4">
                     <div class="item">
-                        <div class="icon">
-                            <img src="<?= $category['icon']; ?>" alt="">
-                        </div>
+                            <img src="<?= $category['icon']; ?>" style="max-width: 64px;" alt="">
                         <h4><?= $category['name']; ?></h4>
                         <span>Available Items</span>
                         <span class="counter"><?= $category['item_count']; ?></span>

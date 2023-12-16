@@ -271,7 +271,8 @@ class DB
         $sql = "SELECT c.*, COUNT(s.id) AS item_count
             FROM category c
             LEFT JOIN statue s ON c.id = s.category_id
-            GROUP BY c.id";
+            GROUP BY c.id
+            HAVING item_count > 0";
         $query = $this->connection->query($sql);
         $data = $query->fetchAll(\PDO::FETCH_ASSOC);
 

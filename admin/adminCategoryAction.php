@@ -43,16 +43,61 @@ if(isset($_POST['update'])) {
 }
 ?>
 
+<section>
+    <div class="col-lg-12" style="align-items: center">
+        <div class="main-button" >
+            <a href="#" onclick="toggleForm()" >Add new CATEGORY</a>
+        </div>
+
+        <div id="categoryForm" style="display: none;">
+            <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
+                <form action="adminCategoryAction.php" method="post">
+                    <label for="name">Insert Name: </label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="description">Insert description: </label>
+                    <input type="text" id="description" name="description" required>
+                    <label for="icon">Insert icon URL: </label>
+                    <input type="text" id="icon" name="icon" required>
+                    <button class="btn-primary" type="submit" name="insert">Insert</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+    <section style="padding: 5px; margin: 5px">
+        <?php foreach ($categories as $category): ?>
+            <?php if (isset($updateItem) && $updateItem['id'] === $category['id']): ?>
+                <div id="updateForm<?= $category['id'] ?>" style="display: block;">
+                    <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
+                        <form action="adminCategoryAction.php" method="post">
+                            <label for="name">Insert Page Name: </label>
+                            <input type="text" id="name" name="name" value="<?= $updateItem['name']; ?>">
+                            <label for="description">Insert description: </label>
+                            <input type="text" id="description" name="description" value="<?= $updateItem['description']; ?>">
+                            <label for="icon">Insert Icon URL: </label>
+                            <input type="text" id="icon" name="icon" value="<?= $updateItem['icon']; ?>">
+                            <input type="hidden" name="id" value="<?= $updateItem['id']; ?>">
+                            <button class="btn-primary" type="submit" name="update">Update</button>
+                        </form>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div id="updateForm<?= $category['id'] ?>" style="display: none;">
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </section>
     <section class="portfolio">
+
         <div class="top-categories">
-            <div class="container" style="margin-right: 0; padding-right: 0">
+            <div class="container" style="margin-right: 10px;">
                     <?php foreach ($categories as $category): ?>
-                    <div class = "col-lg-4" style="display: inline-block;width: 30%"" >
+                    <div class = "col-lg-5" style="display: inline-block;width: 30%"" >
                             <div class="item" style="text-align: center;">
                                 <table>
                                     <tr style="padding: 5px;">
                                         <td style="width: 20%;"><img src="<?= $category['icon']; ?>" alt=""></td>
-                                        <td style="width: 40%;"><h3><?= $category['name']; ?></h3></td>
+                                        <td style="width: 50%;"><h3><?= $category['name']; ?></h3></td>
                                         <td style="width: 10%;">
                                             <a href="?update=<?= $category['id'] ?>" onclick="toggleUpdateForm(<?= $category['id'] ?>)">
                                                 <img src="../assets/images/update.png" alt="" style="width: 40px; height: 40px;">
@@ -67,50 +112,7 @@ if(isset($_POST['update'])) {
                                 </table>
                             </div>
                     </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-        <?php foreach ($categories as $category): ?>
-            <?php if (isset($updateItem) && $updateItem['id'] === $category['id']): ?>
-                <div id="updateForm<?= $category['id'] ?>" style="display: block;">
-                    <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
-                        <form action="adminCategoryAction.php" method="post">
-                            <label for="name">Insert Page Name: </label>
-                            <input type="text" id="name" name="name" value="<?= $updateItem['name']; ?>">
-                            <label for="description">Insert description: </label>
-                            <input type="text" id="description" name="description" value="<?= $updateItem['description']; ?>">
-                            <label for="icon">Insert Icon URL: </label>
-                            <input type="text" id="icon" name="icon" value="<?= $updateItem['icon']; ?>">
-                            <input type="hidden" name="id" value="<?= $updateItem['id']; ?>">
-                            <button type="submit" name="update">Update</button>
-                        </form>
-                    </div>
-                </div>
-            <?php else: ?>
-                <div id="updateForm<?= $category['id'] ?>" style="display: none;">
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
-
-        <div class="col-lg-12" style="align-items: center">
-            <div class="main-button" >
-                <a href="#" onclick="toggleForm()" >Add new CATEGORY</a>
-            </div>
-
-            <div id="categoryForm" style="display: none;">
-                <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
-                    <form action="adminCategoryAction.php" method="post">
-                        <label for="name">Insert Name: </label>
-                        <input type="text" id="name" name="name" required>
-                        <label for="description">Insert description: </label>
-                        <input type="text" id="description" name="description" required>
-                        <label for="icon">Insert icon URL: </label>
-                        <input type="text" id="icon" name="icon" required>
-                        <button type="submit" name="insert">Insert</button>
-                    </form>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </section>
 

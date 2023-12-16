@@ -36,6 +36,12 @@ $db = new DB("localhost", 3306, "root", "", "collection_db");
 
 ?>
 
+<style>
+    .admin {
+        background-image: url('../assets/images/admin-bg-op.png');
+    }
+
+</style>
 <body>
 
 <!-- ***** Header Area Start ***** -->
@@ -69,11 +75,11 @@ $db = new DB("localhost", 3306, "root", "", "collection_db");
 </header>
 <!-- ***** Header Area End ***** -->
 
-<div class="page-heading">
+<div class="page-heading admin">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 header-text">
-                <h2>Welcome to <em>Admin</em> Panel</h2>
+                <h2 class="heading-text"">Welcome to <em>Admin</em> Panel</h2>
             </div>
         </div>
     </div>
