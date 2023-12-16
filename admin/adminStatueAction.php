@@ -51,27 +51,41 @@ if(isset($_POST['update'])) {
     </div>
 
     <div id="statueForm" style="display: none;">
-        <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
+        <div class="col-md-6 offset-md-3 mt-5" style="">
             <form action="adminStatueAction.php" method="post">
-                <label for="name">Insert name: </label>
-                <input style="width: 100px" type="text" id="name" name="name" required>
-                <label for="type">Insert type: </label>
-                <input type="text" id="type" name="type" required><br><br>
-                <label for="manufacturer">Insert manufacturer: </label>
-                <input type="text" id="manufacturer" name="manufacturer" required>
-                <label for="price">Insert price: </label>
-                <input type="text" id="price" name="price" required><br><br>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Insert type: </label>
+                    <input type="text" class="form-control" id="type" name="type" required>
+                </div>
+                <div class="form-group">
+                    <label for="manufacturer">Insert manufacturer: </label>
+                    <input type="text" class="form-control" id="manufacturer" name="manufacturer" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Insert price: </label>
+                    <input type="text" class="form-control" id="price" name="price" required>
+                </div>
+                <div class="form-group">
                 <label for="category_id">Category: </label>
-                <select id="category_id" name="category_id" required>
+                <select class="form-control" id="category_id" name="category_id" required>
                     <?php foreach ($categories as $category): ?>
                         <option value="<?= $category['id']; ?>">
                             <?= $category['name']; ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
-                <label for="img_url">Insert image URL: </label>
-                <input type="text" id="img_url" name="img_url" required>
-                <button type="submit" name="insert">Insert</button>
+                </div>
+                <div class="form-group">
+                    <label for="img_url">Insert image URL: </label>
+                    <input type="text" class="form-control" id="img_url" name="img_url" required>
+                </div>
+                <hr>
+                <button class="btn btn-secondary bg-black" onclick="toggleForm()">Back</button>
+                <button class="btn btn-primary" type="submit" name="insert">Insert</button>
             </form>
         </div>
     </div>
@@ -81,28 +95,42 @@ if(isset($_POST['update'])) {
 <?php foreach ($statues as $statue): ?>
     <?php if (isset($updateItem) && $updateItem['id'] === $statue['id']): ?>
         <div id="updateForm<?= $statue['id'] ?>" style="display: block;">
-            <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
+            <div class="col-md-6 offset-md-3 mt-5">
                 <form action="adminStatueAction.php" method="post">
-                    <label for="name">Name: </label>
-                    <input type="text" id="name" name="name" value="<?= $updateItem['name']; ?>" required>
-                    <label for="type">Statue type: </label>
-                    <input type="text" id="type" name="type" value="<?= $updateItem['type']; ?>" required><br><br>
-                    <label for="manufacturer">Manufacturer: </label>
-                    <input type="text" id="manufacturer" name="manufacturer" value="<?= $updateItem['manufacturer']; ?>" required>
-                    <label for="price">Price: </label>
-                    <input type="text" id="price" name="price" value="<?= $updateItem['price']; ?>" required><br><br>
-                    <label for="category_id">Category: </label>
-                    <select id="category_id" name="category_id" required>
-                        <?php foreach ($categories as $category): ?>
-                            <option value="<?= $category['id']; ?>" <?= ($category['id'] == $updateItem['category_id']) ? 'selected' : ''; ?>>
-                                <?= $category['name']; ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <label for="img_url">Image URL: </label>
-                    <input type="text" id="img_url" name="img_url" value="<?= $updateItem['img_url']; ?>" required>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="<?= $updateItem['name']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Statue type: </label>
+                        <input type="text" class="form-control" id="type" name="type" value="<?= $updateItem['type']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="manufacturer">Manufacturer: </label>
+                        <input type="text" class="form-control" id="manufacturer" name="manufacturer" value="<?= $updateItem['manufacturer']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price: </label>
+                        <input type="text" class="form-control" id="price" name="price" value="<?= $updateItem['price']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category_id">Category</label>
+                        <select class="form-control" id="category_id" name="category_id" required>
+                            <?php foreach ($categories as $category): ?>
+                                <option value="<?= $category['id']; ?>" <?= ($category['id'] == $updateItem['category_id']) ? 'selected' : ''; ?>>
+                                    <?= $category['name']; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="img_url">Image URL: </label>
+                        <input type="text" class="form-control" id="img_url" name="img_url" value="<?= $updateItem['img_url']; ?>" required>
+                    </div>
+                    <hr>
+                    <button class="btn btn-secondary bg-dark" onclick="toggleUpdateForm(0)">Back</button>
                     <input type="hidden" name="id" value="<?= $updateItem['id']; ?>">
-                    <button class="btn-primary" type="submit" name="update">Update</button><br><br>
+                    <button class="btn btn-primary" type="submit" name="update">Update</button>
                 </form>
             </div>
         </div>

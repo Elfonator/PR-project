@@ -43,6 +43,60 @@ if(isset($_POST['insert'])) {
     }
 ?>
 
+<section>
+    <div class="col-lg-12" style="align-items: center">
+        <div class="main-button" >
+            <a href="#" onclick="toggleForm()" >Add new MENU tab</a>
+        </div>
+
+        <div id="menuForm" style="display: none;">
+            <div class="col-md-6 offset-md-3 mt-5">
+                <form action="adminMenuAction.php" method="post">
+                    <div class="form-group">
+                        <label for="page_name">Insert Page Name: </label>
+                        <input type="text" class="form-control" id="page_name" name="page_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="page_url">Insert Page URL: </label>
+                        <input type="text" class="form-control" id="page_url" name="page_url" required>
+                    </div>
+                    <hr>
+                    <button class="btn btn-secondary bg-black" onclick="toggleForm()">Back</button>
+                    <button class="btn btn-primary" type="submit" name="insert">Insert</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section>
+        <?php foreach ($menuItems as $menuItem): ?>
+            <?php if (isset($updateItem) && $updateItem['id'] === $menuItem['id']): ?>
+                <div id="updateForm<?= $menuItem['id'] ?>" style="display: block;">
+                    <div class="col-md-6 offset-md-3 mt-5">
+                        <form action="adminMenuAction.php" method="post">
+                            <div class="form-group">
+                                <label for="page_name">Insert Page Name: </label>
+                                <input type="text" class="form-control" id="page_name" name="page_name" value="<?= $updateItem['page_name']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="page_url">Insert Page URL: </label>
+                                <input type="text" class="form-control" id="page_url" name="page_url" value="<?= $updateItem['page_url']; ?>">
+                            </div>
+                            <hr>
+                            <button class="btn btn-secondary bg-dark" onclick="toggleUpdateForm(0)">Back</button>
+                            <input type="hidden" name="id" value="<?= $updateItem['id']; ?>">
+                            <button class="btn btn-primary" type="submit" name="update">Update</button>
+                        </form>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div id="updateForm<?= $menuItem['id'] ?>" style="display: none;">
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </section>
+
 <section class="portfolio">
         <div class="top-categories">
             <div class="container">
@@ -71,44 +125,6 @@ if(isset($_POST['insert'])) {
                 </div>
             </div>
         </div>
-
-    <?php foreach ($menuItems as $menuItem): ?>
-        <?php if (isset($updateItem) && $updateItem['id'] === $menuItem['id']): ?>
-            <div id="updateForm<?= $menuItem['id'] ?>" style="display: block;">
-                <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
-                    <form action="adminMenuAction.php" method="post">
-                        <label for="page_name">Insert Page Name: </label>
-                        <input type="text" id="page_name" name="page_name" value="<?= $updateItem['page_name']; ?>">
-                        <label for="page_url">Insert Page URL: </label>
-                        <input type="text" id="page_url" name="page_url" value="<?= $updateItem['page_url']; ?>">
-                        <input type="hidden" name="id" value="<?= $updateItem['id']; ?>">
-                        <button type="submit" name="update">Update</button>
-                    </form>
-                </div>
-            </div>
-        <?php else: ?>
-            <div id="updateForm<?= $menuItem['id'] ?>" style="display: none;">
-            </div>
-        <?php endif; ?>
-    <?php endforeach; ?>
-
-    <div class="col-lg-12" style="align-items: center">
-        <div class="main-button" >
-            <a href="#" onclick="toggleForm()" >Add new MENU tab</a>
-        </div>
-
-        <div id="menuForm" style="display: none;">
-            <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
-                <form action="adminMenuAction.php" method="post">
-                    <label for="page_name">Insert Page Name: </label>
-                    <input type="text" id="page_name" name="page_name" required>
-                    <label for="page_url">Insert Page URL: </label>
-                    <input type="text" id="page_url" name="page_url" required>
-                    <button type="submit" name="insert">Insert</button>
-                </form>
-            </div>
-        </div>
-    </div>
 </section>
 
 <script>

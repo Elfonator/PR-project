@@ -50,15 +50,23 @@ if(isset($_POST['update'])) {
         </div>
 
         <div id="categoryForm" style="display: none;">
-            <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
+            <div class="col-md-6 offset-md-3 mt-5">
                 <form action="adminCategoryAction.php" method="post">
+                    <div class="form-group">
                     <label for="name">Insert Name: </label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
                     <label for="description">Insert description: </label>
-                    <input type="text" id="description" name="description" required>
+                    <input type="text" class="form-control" id="description" name="description" required>
+                    </div>
+                    <div class="form-group">
                     <label for="icon">Insert icon URL: </label>
-                    <input type="text" id="icon" name="icon" required>
-                    <button class="btn-primary" type="submit" name="insert">Insert</button>
+                    <input type="text" class="form-control" id="icon" name="icon" required>
+                    </div>
+                    <hr>
+                    <button class="btn btn-secondary bg-black" onclick="toggleForm()">Back</button>
+                    <button class="btn btn-primary" type="submit" name="insert">Insert</button>
                 </form>
             </div>
         </div>
@@ -68,16 +76,24 @@ if(isset($_POST['update'])) {
         <?php foreach ($categories as $category): ?>
             <?php if (isset($updateItem) && $updateItem['id'] === $category['id']): ?>
                 <div id="updateForm<?= $category['id'] ?>" style="display: block;">
-                    <div style="display: flex; justify-content: center; align-items: center; padding-top: 50px;">
+                    <div class="col-md-6 offset-md-3 mt-5">
                         <form action="adminCategoryAction.php" method="post">
+                            <div class="form-group">
                             <label for="name">Insert Page Name: </label>
-                            <input type="text" id="name" name="name" value="<?= $updateItem['name']; ?>">
+                            <input type="text" class="form-control" id="name" name="name" value="<?= $updateItem['name']; ?>">
+                            </div>
+                            <div class="form-group">
                             <label for="description">Insert description: </label>
-                            <input type="text" id="description" name="description" value="<?= $updateItem['description']; ?>">
-                            <label for="icon">Insert Icon URL: </label>
-                            <input type="text" id="icon" name="icon" value="<?= $updateItem['icon']; ?>">
+                            <input type="text" class="form-control" id="description" name="description" value="<?= $updateItem['description']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="icon">Insert Icon URL: </label>
+                            <input type="text" class="form-control" id="icon" name="icon" value="<?= $updateItem['icon']; ?>">
+                            </div>
+                            <hr>
+                            <button class="btn btn-secondary bg-dark" onclick="toggleUpdateForm(0)">Back</button>
                             <input type="hidden" name="id" value="<?= $updateItem['id']; ?>">
-                            <button class="btn-primary" type="submit" name="update">Update</button>
+                            <button class="btn btn-primary" type="submit" name="update">Update</button>
                         </form>
                     </div>
                 </div>
@@ -122,7 +138,7 @@ if(isset($_POST['update'])) {
             var formId = 'updateForm<?= $category['id'] ?>';
             var formUp = document.getElementById(formId);
             formUp.style.display = (categoryId === <?= $category['id'] ?>) ? 'block' : 'none';
-            <?php endforeach; ?>;
+            <?php endforeach; ?>
         }
         function toggleForm() {
             var form = document.getElementById('categoryForm');
