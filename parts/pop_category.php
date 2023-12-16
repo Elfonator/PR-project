@@ -13,7 +13,7 @@ $categoriesData= $db->getCategoriesWithCount();
         <div class="popular-item">
             <div class="top-content">
                 <div class="icon">
-                    <img src="assets/images/<?= $category['icon']; ?>" alt="">
+                    <img src="<?= $category['icon']; ?>" alt="">
                 </div>
                 <div class="right">
                     <h4><?= $category['name']; ?></h4>

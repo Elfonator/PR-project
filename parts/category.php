@@ -15,7 +15,7 @@ $categoriesData= $db->getCategoriesWithCount();
                 <div class="col-lg col-sm-4">
                     <div class="item">
                         <div class="icon">
-                            <img src="assets/images/<?= $category['icon']; ?>" alt="">
+                            <img src="<?= $category['icon']; ?>" alt="">
                         </div>
                         <h4><?= $category['name']; ?></h4>
                         <span>Available Items</span>

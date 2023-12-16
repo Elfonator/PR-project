@@ -236,7 +236,7 @@ class DB
             $sql .= ", description = '" . $description . "'";
         }
         if (!empty($icon)) {
-            $sql .= ", img_url = '" . $icon . "'";
+            $sql .= ", icon = '" . $icon . "'";
         }
         $sql .= " WHERE id = " . $id;
 
