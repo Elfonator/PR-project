@@ -11,7 +11,7 @@ $menuItems = $db->getMenu();
     foreach ($menuItems as $menuItem) {
         echo "<li>".$menuItem['page_name']." 
     <a href='updateMenu.php?id=".$menuItem['id']."'>Update</a>  
-    <a href='deleteMenu.php?id=".$menuItem['id']."'onclick='return confirmDelete()'>Delete</a>
+    <a href='deleteMenu.php?id=".$menuItem['id']."'>Delete</a>
     </li>";
     }
     echo "</ul>";
