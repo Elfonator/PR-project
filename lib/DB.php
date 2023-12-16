@@ -117,17 +117,6 @@ class DB
         return $popularImg;
     }
 
-    public function updatePopularImg(array $selectedImg): void {
-        $sqlDelete = "DELETE FROM popular_img";
-        $this->connection->query($sqlDelete);
-        $sql = "INSERT INTO popular_img (statue_id) VALUES (:statueID)";
-        $stmt = $this->connection->prepare($sql);
-
-        foreach ($selectedImg as $statueID) {
-            $stmt->bindValue(':statueID', $statueID, PDO::PARAM_INT);
-            $stmt->execute();
-        }
-    }
     public function isPopularImg(int $statueID): bool {
         $sql = "SELECT COUNT(*) FROM popular_img WHERE statue_id = :statueID";
         $stmt = $this->connection->prepare($sql);
@@ -137,6 +126,7 @@ class DB
 
         return ($count > 0);
     }
+
     public function getStatues() :array {
         $sql = "SELECT * FROM statue";
         $query = $this->connection->query($sql);
@@ -257,13 +247,16 @@ class DB
         return $stmt->execute();
     }
 
-    public function filterStatuesByCategory(): array{
-        $category_id = $_GET['category_id'];
-        $sql = "SELECT * FROM statue WHERE category_id = " . $category_id;
-        $query = $this->connection->query($sql);
-        $data = $query->fetchAll(\PDO::FETCH_ASSOC);
+    public function searchStatues($statueName, $categoryFilter = null) {
+        $query = "SELECT * FROM statue WHERE name LIKE '%$statueName%'";
 
-        return $data;
+        if ($categoryFilter) {
+            $query .= " AND category_id = $categoryFilter";
+        }
+
+        $result = $this->connection->query($query);
+
+        return $result->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getCategoriesWithCount(): array
@@ -289,6 +282,12 @@ class DB
         $data = $query->fetchAll(\PDO::FETCH_ASSOC);
 
         return $data;
+    }
+
+    public function getStatuesByCategory($categoryId){
+        $sql = "SELECT * FROM statue WHERE category_id = '$categoryId'";
+        $result = $this->connection->query($sql);
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }

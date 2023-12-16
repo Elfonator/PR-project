@@ -11,7 +11,7 @@ $db = new DB("localhost", 3306, "root", "", "collection_db");
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <a href="/index.php" class="logo">
+                    <a href="index.php" class="logo">
                         <img src="assets/images/logo.png" alt="Comicsarium Logo">
                     </a>
                     <ul class="nav">

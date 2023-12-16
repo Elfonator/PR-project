@@ -20,7 +20,7 @@ global$db; <!DOCTYPE html>
     <link rel="stylesheet" href="assets/css/templatemo-snapx-photography.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <!--
 
 TemplateMo 576 SnapX Photography
@@ -35,6 +35,14 @@ https://templatemo.com/tm-576-snapx-photography
 <?php
 include_once "parts/header.php";
 $menu = $db->getMenu();
+
+?>
+<?php
+if(isset($_GET['search'])) {
+    $statueName = $_GET['statue'] ?? '';
+    $categoryId = $_GET['category'] ?? '';
+    $filteredStatues = $db->searchStatues($statueName, $categoryId);
+}
 
 ?>
 
@@ -53,15 +61,15 @@ $menu = $db->getMenu();
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <form id="search-form" name="gs" method="submit" role="search" action="#">
+          <form id="search-form" role="search" action="statues.php" method="get">
             <div class="row">
-              <div class="col-lg-4">
+              <div class="col-lg-5">
                 <fieldset>
-                    <label for="contest" class="form-label">Search Any Statue</label>
-                    <input type="text" name="contest" class="searchText" placeholder="Name..." autocomplete="on" required>
+                    <label for="statue" class="form-label">Search Any Statue</label>
+                    <input type="text" name="statue" class="searchText" placeholder="Name..." autocomplete="on" required>
                 </fieldset>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-5">
                 <fieldset>
                     <label for="category" class="form-label">Pick Category</label>
                     <select name="category" class="form-select" aria-label="Choose a category" id="category" onchange="this.form.click()">
@@ -77,19 +85,7 @@ $menu = $db->getMenu();
               </div>
               <div class="col-lg-2">
                 <fieldset>
-                    <label for="chooseprice" class="form-label">Award Price</label>
-                    <select name="Price" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
-                        <option selected>Choose a price</option>
-                        <option value="500">$500 to $1,000</option>
-                        <option value="1500">$1,500 to $2,000</option>
-                        <option value="2500">$2,500 to $3000</option>
-                        <option value="3500+">$3,500+</option>
-                    </select>
-                </fieldset>
-              </div>
-              <div class="col-lg-2">                        
-                <fieldset>
-                    <button class="main-button">Search Now</button>
+                    <button name="search" class="main-button">Search Now</button>
                 </fieldset>
               </div>
             </div>
@@ -98,6 +94,20 @@ $menu = $db->getMenu();
       </div>
     </div>
   </div>
+<section class="photos-videos">
+    <div class="container">
+        <div class="row">
+<?php if (!empty($filteredStatues)) {
+    foreach ($filteredStatues as $statue) {
+        echo "<ul>". $statue['name']. ":";
+        echo "<li>Price - $". $statue['price']. "</li>";
+        echo "<li>Type - ". $statue['type']. "</li></ul>";
+        }
+    } else echo "No statues found.";
+?>
+        </div>
+    </div>
+</section>
 
   <section class="photos-videos">
     <div class="container">

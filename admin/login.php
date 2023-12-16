@@ -14,7 +14,6 @@ if(isset($_POST['login'])) {
 }
 
 if(isset($_GET['error'])) {
-    echo "";
     echo "<p style='color: red'>Incorrect Login Information!</p><br>";
 }
 ?>

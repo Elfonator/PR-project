@@ -37,6 +37,18 @@ https://templatemo.com/tm-576-snapx-photography
 include_once "parts/header.php";
 $menu = $db->getMenu();
 
+$maxCountCategory = null;
+$maxCount = 0;
+$categoriesWithCount = $db -> getCategoriesWithCount();
+
+foreach ($categoriesWithCount as $category) {
+    if ($category['item_count'] > $maxCount) {
+        $maxCount = $category['item_count'];
+        $maxCountCategory = $category;
+    }
+}
+
+$itemsFromMaxCountCategory = $db->getStatuesByCategory($maxCountCategory['id']);
 ?>
 
   <div class="page-heading">
@@ -59,125 +71,30 @@ include_once "parts/category.php";
       <div class="row">
         <div class="col-lg-12">
           <div class="section-heading text-center">
-            <h6>Featured Contests</h6>
-            <h4>View Most <em>Popular</em> Category <em>Contests</em></h4>
+            <h6>Featured Content</h6>
+            <h4>View Most <em>Popular</em> Category</h4>
           </div>
         </div>
+          <?php foreach ($itemsFromMaxCountCategory as $item): ?>
         <div class="col-lg-6">
           <div class="item">
             <div class="thumb">
-              <img src="assets/images/featured-image-02.jpg" alt="">
+              <img src="<?=$item['img_url'] ?>" style="max-height: 500px;" alt="">
               <div class="hover-effect">
                 <div class="content">
-                  <div class="top-content">
-                    <span class="award">Award Price</span>
-                    <span class="price">$1,600</span>
+                  <div class="top-content" style="width: 160px;">
+                    <span class="award" style="padding-right: 10px">Price</span>
+                    <span class="price" style="margin-bottom: 10px;">$<?=$item['price'] ?></span>
                   </div>
-                  <h4>Walk In The Nature Night</h4>
-                  <div class="info">
-                    <span class="participants"><img src="assets//images/icon-03.png" alt=""><br>60<br>Participants</span>
-                    <span class="submittions"><img src="assets//images/icon-01.png" alt=""><br>188<br>Submissions</span>
-                  </div>
-                  <div class="border-button">
-                    <a href="category-details.php">Browse Nature Contests</a>
-                  </div>
+                    <hr>
+                  <h4><?=$item['name'] ?></h4>
+                    <h6>by <?=$item['manufacturer'] ?></h6>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/images/featured-image-01.jpg" alt="">
-              <div class="hover-effect">
-                <div class="content">
-                  <div class="top-content">
-                    <span class="award">Award Price</span>
-                    <span class="price">$3,200</span>
-                  </div>
-                  <h4>Walk In The Nature Night</h4>
-                  <div class="info">
-                    <span class="participants"><img src="assets//images/icon-03.png" alt=""><br>78<br>Participants</span>
-                    <span class="submittions"><img src="assets//images/icon-01.png" alt=""><br>240<br>Submissions</span>
-                  </div>
-                  <div class="border-button">
-                    <a href="category-details.php">Browse Nature Contests</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/images/featured-image-03.jpg" alt="">
-              <div class="hover-effect">
-                <div class="content">
-                  <div class="top-content">
-                    <span class="award">Award Price</span>
-                    <span class="price">$4,100</span>
-                  </div>
-                  <h4>Walk In The Nature Night</h4>
-                  <div class="info">
-                    <span class="participants"><img src="assets//images/icon-03.png" alt=""><br>112<br>Participants</span>
-                    <span class="submittions"><img src="assets//images/icon-01.png" alt=""><br>286<br>Submissions</span>
-                  </div>
-                  <div class="border-button">
-                    <a href="category-details.php">Browse Nature Contests</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/images/featured-image-04.jpg" alt="">
-              <div class="hover-effect">
-                <div class="content">
-                  <div class="top-content">
-                    <span class="award">Award Price</span>
-                    <span class="price">$3,400</span>
-                  </div>
-                  <h4>Walk In The Nature Night</h4>
-                  <div class="info">
-                    <span class="participants"><img src="assets//images/icon-03.png" alt=""><br>54<br>Participants</span>
-                    <span class="submittions"><img src="assets//images/icon-01.png" alt=""><br>140<br>Submissions</span>
-                  </div>
-                  <div class="border-button">
-                    <a href="category-details.php">Browse Nature Contests</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <img src="assets/images/featured-image-05.jpg" alt="">
-              <div class="hover-effect">
-                <div class="content">
-                  <div class="top-content">
-                    <span class="award">Price</span>
-                    <span class="price">$2,200</span>
-                  </div>
-                  <h4>Walk In The Nature Night</h4>
-                  <div class="info">
-                    <span class="participants"><img src="assets//images/icon-03.png" alt=""><br>68<br>Participants</span>
-                    <span class="submittions"><img src="assets//images/icon-01.png" alt=""><br>162<br>Submissions</span>
-                  </div>
-                  <div class="border-button">
-                    <a href="category-details.php">Browse Nature Contests</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <?php endforeach;?>
       </div>
     </div>
   </section>
