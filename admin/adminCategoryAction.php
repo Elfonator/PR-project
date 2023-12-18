@@ -45,7 +45,7 @@ if(isset($_POST['update'])) {
 
 <section>
     <div class="col-lg-12" style="align-items: center">
-        <div class="main-button" >
+        <div class="main-button" style="padding-left: 20px;" >
             <a href="#" onclick="toggleForm()" >Add new CATEGORY</a>
         </div>
 

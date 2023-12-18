@@ -99,34 +99,6 @@ class DB
         return $stmt->execute();
     }
 
-
-    public function getPopularImg(): array {
-        $sql = "SELECT popular_img.statue_id as statue_id, statue.name as name, statue.description as description, statue.img_url as img FROM statue INNER JOIN popular_ing ON statue.id=popular_img.statue_id ORDER BY RAND()";
-        $query = $this->connection->query($sql);
-        $data = $query->fetchAll(\PDO::FETCH_ASSOC);
-        $popularImg = [];
-
-        foreach ($data as $statueItem) {
-            $popularImg[] = [
-                'statue_id' => $statueItem['statue_id'],
-                'name' => $statueItem['name'],
-                'description' => $statueItem['description'],
-                'img' => $statueItem['img']
-            ];
-        }
-        return $popularImg;
-    }
-
-    public function isPopularImg(int $statueID): bool {
-        $sql = "SELECT COUNT(*) FROM popular_img WHERE statue_id = :statueID";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->bindParam(':statueID', $statueID, PDO::PARAM_INT);
-        $stmt->execute();
-        $count = $stmt->fetchColumn();
-
-        return ($count > 0);
-    }
-
     public function getStatues() :array {
         $sql = "SELECT * FROM statue";
         $query = $this->connection->query($sql);
