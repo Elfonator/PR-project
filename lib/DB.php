@@ -250,7 +250,7 @@ class DB
     public function searchStatues($statueName, $categoryFilter = null) {
         $query = "SELECT * FROM statue WHERE name LIKE '%$statueName%'";
 
-        if ($categoryFilter) {
+        if ($categoryFilter && $categoryFilter !== 'Choose a category') {
             $query .= " AND category_id = $categoryFilter";
         }
 

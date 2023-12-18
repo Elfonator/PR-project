@@ -21,13 +21,7 @@ global$db; <!DOCTYPE html>
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-<!--
 
-TemplateMo 576 SnapX Photography
-
-https://templatemo.com/tm-576-snapx-photography
-
--->
   </head>
 
 <body>
@@ -97,14 +91,21 @@ if(isset($_GET['search'])) {
 <section class="photos-videos">
     <div class="container">
         <div class="row">
-<?php if (!empty($filteredStatues)) {
-    foreach ($filteredStatues as $statue) {
-        echo "<ul>". $statue['name']. ":";
-        echo "<li>Price - $". $statue['price']. "</li>";
-        echo "<li>Type - ". $statue['type']. "</li></ul>";
-        }
-    } else echo "No statues found.";
-?>
+<?php if (!empty($filteredStatues)):?>
+    <?php foreach ($filteredStatues as $statue):?>
+        <div class="col-lg-4">
+            <div class="item">
+                <div class="thumb">
+                    <img src="<?= $statue['img_url']; ?>" alt="">
+                    <div class="top-content">
+                        <h5><?= $statue['name']; ?></h5>
+                        <h6><?= $statue['type']; ?></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php endforeach; ?>
+<?php endif; ?>
         </div>
     </div>
 </section>
